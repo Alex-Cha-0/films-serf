@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Tenth navbar example">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08"
+                aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+{#                    <a class="nav-link active" aria-current="page" href="{% url 'contact:news' %}">News</a>#}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'contact:index' %}">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact:liked_films' %}">Liked Films</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+            </ul>
+            <form method="post" class="d-flex" role="search" action="{% url 'contact:films' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                       name="film-params">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <form method="post" class="d-flex"  action="{% url 'contact:switch_mode' %}">
+                {% csrf_token %}
+                <li class="nav-item">
+                    {% if request.user.account.darkmode %}
+                    <button class="shadow rounded btn btn-dark" type="submit" id="btnSwitch" name="lightmode" value="True">Lightmode</button>
+
+                    {% else %}
+                    <button class="btn btn-dark " type="submit" id="btnSwitch" name="darkmode" value="True">Dark Mode</button>
+
+                    {% endif %}
+                </li>
+            </form>
+        </div>
+    </div>
+</nav>

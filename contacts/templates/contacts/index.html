@@ -1,0 +1,47 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    {#    <div class="card mb-3" style="max-width: 700px;">#}
+    {#        <div class="row g-0">#}
+    {#            <div class="col-md-4">#}
+    {#                <img src="{{ data.poster.url }}" class="img-fluid rounded-start" alt="...">#}
+    {#            </div>#}
+    {#            <div class="col-md-8">#}
+    {#                <div class="card-body">#}
+    {#                    <h5 class="card-title">{{ data.name }} <span#}
+    {#                            class="badge bg-secondary">КП {{ data.rating.kp }}</span> <small>{{ data.id }}</small></h5>#}
+    {#                    <p class="card-text">{{ data.description }}</p>#}
+    {#                    <p class="card-text"><small class="text-body-secondary">{{ data.year }}</small></p>#}
+    {#                    <div class="text-end like">#}
+    {#                        <form method="post"#}
+    {#                              action="{% url 'contact:like' film_id=data.id %}">#}
+    {#                            {% csrf_token %}#}
+    {#                            <button type="submit"#}
+    {#                                    class="btn btn-secondary btn-sm position-relative">#}
+    {#                                <i class="fa-regular fa-thumbs-up"#}
+    {#                                   style="color: #fcfcfc;"></i>#}
+    {#                            </button>#}
+    {#                        </form>#}
+    {#                    </div>#}
+    {##}
+    {#                </div>#}
+    {##}
+    {#            </div>#}
+    {#            <div class="card-body">#}
+    {#                <a href="https://www.kinopoisk.ru/film/{{ data.id }}" class="card-link kino-link">Фильм на#}
+    {#                    кинопоиске</a>#}
+    {##}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#{% include 'layout/parts/side_menu.html' %}#}
+    <div class="info-film">
+        <h4 class="h5">{{ data.name }}</h4>
+        <div class="badge bg-secondary"><span class="h4">Рейтинг КП: {{ data.rating.kp }}" Рейтинг IMDB: {{ data.rating.imdb }}</span></div>
+        <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action">Год производства: {{ data.year }} {{ data.seasonsInfo }}</button>
+        </div>
+
+    </div>
+    <div></div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-4 g-8 ">
+        {% for data in post %}
+            <div class="col p-2" style="max-width: 220px;">
+                <div class="card h-100">
+                    <a href="https://www.kinopoisk.ru/film/{{ data.film_id }}"><img src="{{ data.j_field.poster.url }}"
+                                                                                    class="card-img-top" alt="..."></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data.j_field.name }}</h5>
+                        <div>
+                          <span class="badge bg-secondary">КП {{ data.j_field.rating.kp }}</span>
+                            <span class="badge bg-secondary">Imdb {{ data.j_field.rating.imdb }}</span>
+                        </div>
+                        {% if data.j_field.shortDescription %}
+                        <p class="card-text">{{ data.j_field.shortDescription|truncatewords:16 }}</p>
+                        {% else %}
+                        <p class="card-text">{{ data.j_field.description|truncatewords:16 }}</p>
+                        {% endif %}
+
+                        <p class="card-text text-end"><small class="text-body-secondary">Дата выхода: {{ data.j_field.year }}</small></p>
+
+                        <!-- like -->
+                        <div class="text-end like">
+                            <button class="btn btn-danger btn-sm position-relative rounded-4 disabled">
+                                <i class="fa-regular fa-thumbs-up"
+                                   style="color: #fcfcfc;"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                                {{ data.post_like }}
+                                                                <span class="visually-hidden">likes</span></span>
+                            </button>
+                        </div>
+                        <!-- end -->
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

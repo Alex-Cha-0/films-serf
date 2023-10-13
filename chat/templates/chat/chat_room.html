@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+    <h2>{{ room.name }}</h2>
+    <ul id="chat-messages">
+        {% for message in messages %}
+            <li>{{ message.content }}</li>
+        {% endfor %}
+    </ul>
+
+    <form id="chat-form">
+        <input type="text" id="message-input" placeholder="Type your message here...">
+        <button type="submit">Send</button>
+    </form>
+
+    <script src="{% static 'js/chat.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-3 g-4 ">
+        {% for data in films.docs %}
+            <div class="col bg-image hover-zoom">
+                <div class="card h-100">
+                    <a href="https://www.kinopoisk.ru/film/{{ data.id }}"><img src="{{ data.poster.url }}" class="card-img-top" alt="..."></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data.name }}</h5>
+                        <p class="card-text">{{ data.shortDescription }}</p>
+                        <p class="card-text"><small class="text-body-secondary">{{ data.year }}</small></p>
+                        <div class="text-end">
+                            <form method="post"
+                                  action="">
+                                {% csrf_token %}
+                                <button type="submit"
+                                        class="btn btn-secondary btn-sm position-relative">
+                                    <i class="fa-regular fa-thumbs-up"
+                                       style="color: #fcfcfc;"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
