@@ -10,6 +10,4 @@ class Account(models.Model):
     )
 
     def __str__(self):
-        return self.user.username
-
-
+        return f"{self.user.username}, darkmode: {self.darkmode}"
